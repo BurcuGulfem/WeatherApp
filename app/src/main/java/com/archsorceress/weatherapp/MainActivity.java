@@ -185,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     Log.e(TAG,"Failure in getWeatherDataForSavedCities call "+ e.getLocalizedMessage());
+                    loadingLayout.setVisibility(View.GONE);
                 }
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
@@ -202,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.e(TAG,"Response is not successful "+ response.toString());
                         handleErrorResponse(R.string.alert_error_getting_list);
                     }
+                    loadingLayout.setVisibility(View.GONE);
                 }
             });
         } catch (IOException e) {
